@@ -1,90 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Gestión de Productos</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gestión del Sistema</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Gestión de Productos</h1>
-
-    <div class="form-container">
-      <h2 id="form-title">Agregar Producto</h2>
-      <form id="product-form" novalidate>
-        <input type="hidden" id="product-id">
-
-        <div class="input-group">
-          <label for="codigo">Código:</label>
-          <input type="text" id="codigo" placeholder="Ej. P123" required>
-          <div class="error" id="err-codigo"></div>
+    <div class="container">
+        <div class="header">
+            <h1>Sistema de Gestión</h1>
+            <p class="subtitle">Seleccione el módulo que desea gestionar</p>
         </div>
 
-        <div class="input-group">
-          <label for="name">Nombre:</label>
-          <input type="text" id="name" placeholder="Ej. Cereal" required>
-          <div class="error" id="err-nombre"></div>
+        <div class="menu-container">
+            <a href="productos.html" class="menu-card">
+                <h3>🏷️ Gestión de Productos</h3>
+                <p>Administre los productos del sistema: agregar, editar, eliminar y consultar productos.</p>
+                <span class="btn-primary">Acceder</span>
+            </a>
+
+            <a href="tipos.html" class="menu-card">
+                <h3>📋 Gestión de Tipos</h3>
+                <p>Administre los tipos de productos disponibles en el sistema.</p>
+                <span class="btn-primary">Acceder</span>
+            </a>
+
+            <a href="origenes.html" class="menu-card">
+                <h3>🌍 Gestión de Orígenes</h3>
+                <p>Administre los orígenes de los productos del sistema.</p>
+                <span class="btn-primary">Acceder</span>
+            </a>
         </div>
 
-        <div class="input-group">
-          <label for="description">Descripción:</label>
-          <input type="text" id="description" placeholder="Ej. Caja mediana" required>
-          <div class="error" id="err-descripcion"></div>
+        <div class="menu-card">
+            <h3>📊 Resumen del Sistema</h3>
+            <p id="resumen">Cargando información del sistema...</p>
         </div>
-
-        <div class="input-group">
-          <label for="price">Precio:</label>
-          <input type="number" id="price" step="0.01" placeholder="0.00" required>
-          <div class="error" id="err-precio"></div>
-        </div>
-
-        <div class="input-group">
-          <label for="stock">Stock:</label>
-          <input type="number" id="stock" placeholder="0" required>
-          <div class="error" id="err-stock"></div>
-        </div>
-
-        <div class="input-group">
-          <label for="tipo">Tipo de Producto:</label>
-          <select id="tipo" required><option value="">-- Seleccione --</option></select>
-          <div class="error" id="err-tipo"></div>
-        </div>
-
-        <div class="input-group">
-          <label for="origen">Origen:</label>
-          <select id="origen" required><option value="">-- Seleccione --</option></select>
-          <div class="error" id="err-origen"></div>
-        </div>
-
-        <div class="buttons">
-          <button type="submit" id="submit-btn">Guardar</button>
-          <button type="button" id="cancel-btn" class="hidden">Cancelar</button>
-        </div>
-      </form>
     </div>
 
-    <div class="products-container">
-      <h2>Lista de Productos</h2>
-      <div id="loading">Cargando...</div>
-      <table id="products-table" class="hidden">
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Tipo</th>
-            <th>Origen</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="products-body"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="menu.js"></script>
 </body>
 </html>

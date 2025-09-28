@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Volver al Menú Principal</a>
+        
+        <div class="header">
+            <h1>Gestión de Productos</h1>
+            <p class="subtitle">Administre los productos del sistema</p>
+        </div>
+
+        <div class="form-container">
+            <h2 id="form-title">Agregar Producto</h2>
+            <form id="product-form" novalidate>
+                <input type="hidden" id="product-id">
+
+                <div class="input-group">
+                    <label for="codigo">Código:</label>
+                    <input type="text" id="codigo" placeholder="Ej. P123" required>
+                    <div class="error" id="err-codigo"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" placeholder="Ej. Cereal" required>
+                    <div class="error" id="err-nombre"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="description">Descripción:</label>
+                    <input type="text" id="description" placeholder="Ej. Caja mediana" required>
+                    <div class="error" id="err-descripcion"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="price">Precio:</label>
+                    <input type="number" id="price" step="0.01" placeholder="0.00" required>
+                    <div class="error" id="err-precio"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="stock">Stock:</label>
+                    <input type="number" id="stock" placeholder="0" required>
+                    <div class="error" id="err-stock"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="tipo">Tipo de Producto:</label>
+                    <select id="tipo" required><option value="">-- Seleccione --</option></select>
+                    <div class="error" id="err-tipo"></div>
+                </div>
+
+                <div class="input-group">
+                    <label for="origen">Origen:</label>
+                    <select id="origen" required><option value="">-- Seleccione --</option></select>
+                    <div class="error" id="err-origen"></div>
+                </div>
+
+                <div class="buttons">
+                    <button type="submit" class="btn-success" id="submit-btn">Guardar</button>
+                    <button type="button" class="btn-secondary" id="cancel-btn" class="hidden">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <h2>Lista de Productos</h2>
+            <div id="loading">Cargando...</div>
+            <table id="products-table" class="hidden">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Tipo</th>
+                        <th>Origen</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="products-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="productos.js"></script>
+</body>
+</html>
