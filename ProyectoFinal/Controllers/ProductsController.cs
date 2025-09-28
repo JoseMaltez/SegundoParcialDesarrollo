@@ -90,11 +90,9 @@ namespace ProyectoFinal.Controllers
         {
             try
             {
-                // Validar que el código no exista
                 if (await _context.Productos.AnyAsync(x => x.CodigoProducto == producto.CodigoProducto))
                     return Conflict(new { message = "El código de producto ya existe" });
 
-                // Validar que el tipo y origen existan
                 if (!await _context.TiposProducto.AnyAsync(t => t.IdTipoProducto == producto.IdTipoProducto))
                     return BadRequest(new { message = "El tipo de producto no existe" });
 
@@ -104,7 +102,6 @@ namespace ProyectoFinal.Controllers
                 _context.Productos.Add(producto);
                 await _context.SaveChangesAsync();
 
-                // Devolver el producto creado con los datos relacionados
                 var productoConRelaciones = await _context.Productos
                     .Include(p => p.TipoProducto)
                     .Include(p => p.OrigenProducto)
@@ -141,23 +138,19 @@ namespace ProyectoFinal.Controllers
                 if (id != producto.IdProducto)
                     return BadRequest(new { message = "ID del producto no coincide" });
 
-                // Verificar si el producto existe
                 var productoExistente = await _context.Productos.FindAsync(id);
                 if (productoExistente == null)
                     return NotFound(new { message = "Producto no encontrado" });
 
-                // Validar que el código no exista en otro producto
                 if (await _context.Productos.AnyAsync(p => p.CodigoProducto == producto.CodigoProducto && p.IdProducto != id))
                     return Conflict(new { message = "El código de producto ya existe en otro producto" });
 
-                // Validar que el tipo y origen existan
                 if (!await _context.TiposProducto.AnyAsync(t => t.IdTipoProducto == producto.IdTipoProducto))
                     return BadRequest(new { message = "El tipo de producto no existe" });
 
                 if (!await _context.OrigenesProducto.AnyAsync(o => o.IdOrigen == producto.IdOrigen))
                     return BadRequest(new { message = "El origen no existe" });
 
-                // Actualizar propiedades
                 productoExistente.CodigoProducto = producto.CodigoProducto;
                 productoExistente.Nombre = producto.Nombre;
                 productoExistente.Descripcion = producto.Descripcion;

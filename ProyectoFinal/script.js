@@ -5,6 +5,7 @@ const ORIGENES_API = `${API_BASE}/origenes`;
 
 let editingId = null;
 
+
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('product-form').addEventListener('submit', handleSubmit);
     document.getElementById('cancel-btn').addEventListener('click', cancelEdit);
@@ -214,8 +215,7 @@ async function editProduct(id) {
         document.getElementById('form-title').textContent = 'Editar Producto';
         document.getElementById('submit-btn').textContent = 'Actualizar';
         document.getElementById('cancel-btn').classList.remove('hidden');
-        
-        // Scroll al formulario
+
         document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth' });
         
     } catch (err) {
@@ -274,6 +274,5 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-// Hacer funciones globales para los onclick
 window.editProduct = editProduct;
 window.deleteProduct = deleteProduct;
